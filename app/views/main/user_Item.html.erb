@@ -1,0 +1,36 @@
+<p style="color: green"><%= notice %></p>
+<div class="container"> 
+<h1>My Items</h1>
+<p>User ID: <%= session[:user_id] %> </p>
+<p>User Name: <%= @Userrr.name %> </p>
+
+<table class="table d-flex justify-content-center"">
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+    <div id="items">
+    <% @items.each do |item| %>
+        <tr>
+            <td>  <%= item.name %></td>
+            <td>  <%= item.price %></td>
+            <td> <%= item.stock %></td>
+            <td> <%= link_to "EDIT", "/items/#{item.id}/edit", class:"btn btn-primary" %>  </td>
+            <td> <%= link_to "DELETE", "/main/destroyItem/#{item.id}", class:"btn btn-danger" %> </td>
+        </tr>
+    <% end %>
+    </div>
+
+</table>
+
+<%= link_to "New item", new_item_path, class:"btn btn-info" %>
+</div>
+<style>
+    table, th, td {
+        border: 1px solid;
+    }
+</style>
